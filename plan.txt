@@ -1,0 +1,78 @@
+Important points
+Sales tax is applicable on goods except [book , food, medicine]
+
+Imported products add 5% more to all goods
+
+sales_tax = n * p / 100 round off to 0.05 eg 10.00, 10.05, 10.10
+
+
+Input
+ 1 imported bottle of perfume at 27.99
+ 1 bottle of perfume at 18.99
+ 1 packet of headache pills at 9.75
+ 1 box of imported chocolates at 11.25 
+
+
+ output
+ 1 imported bottle of perfume: 32.19
+ 1 bottle of perfume: 20.89
+ 1 packet of headache pills: 9.75
+ 1 imported box of chocolates: 11.85
+ Sales Taxes: 6.70
+ Total: 74.68 
+
+ What we know
+ - how to calculate sales tax
+ - total = product's amount + sales tax 
+ - 
+
+
+ what we dont know
+ - how to segregate product in their category
+    - headache pills is type of medicine
+    - box of chocolates is type of food
+
+what solution can be applicable then
+- have a database/list of category having values of each product  
+    eg Category - ["Food", "book", "medicine", "clothes", "kitchenware"] etc
+    Food - ["chocolates", "bread", "chips"]
+    medicine - ["headache pills", "paracetamol"]
+
+    we can use DAO's to fetch data related to this
+    
+
+
+Design of application
+User actions                        Services
+
+create new bill                     BillService
+add product                         BillService
+bill statement/ bill slip           BillService
+
+
+DAO
+getCategorybyProductName(name : String) : Category
+isCategoryTaxExempted(category : Category) : Boolean
+
+Models
+Category
+- id
+- name
+- list of products id's
+
+Product
+- id
+- name
+- price
+
+price
+- amount
+- salestaxPercent
+- importSalesTaxPercent
+- isTaxExempted
+
+
+
+
+
+
